@@ -1,0 +1,4 @@
+(executable
+ (public_name alua)
+ (name main)
+ (libraries alua))

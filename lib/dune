@@ -1,0 +1,4 @@
+(library
+ (name alua)
+ (modules token lexer ast interpreter)
+ )
