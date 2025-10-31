@@ -1,2 +1,8 @@
 (library
- (name alua))
+ (name alua)
+ (modules lexer parser))
+
+(ocamllex lexer)
+
+(menhir
+  (modules parser))

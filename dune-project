@@ -1,6 +1,7 @@
 (lang dune 3.20)
 
 (name alua)
+(using menhir 3.0)
 
 (generate_opam_files true)
 
