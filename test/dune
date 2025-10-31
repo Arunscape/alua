@@ -1,4 +1,2 @@
 (test
- (name test_alua)
- (modules test_alua test_lexer)
- )
+ (name test_alua))
