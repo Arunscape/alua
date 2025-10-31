@@ -12,16 +12,22 @@ let parse_and_eval input =
 let () =
   print_endline "Arun's Lua Interpreter that is just a calculator for now";
   print_endline "Press Ctrl+D to exit\n";
+
+  (* Set up history file *)
+  let history_file = ".alua_history" in
+  let _ = LNoise.history_load ~filename:history_file in
+  let _ = LNoise.history_set ~max_length:100 in
+
   let rec repl () =
-    print_string "> ";
-    flush stdout;
-    match read_line () with
-    | input ->
-        parse_and_eval input;
-        repl ()
-    | exception End_of_file ->
+    match LNoise.linenoise "> " with
+    | None ->
         print_endline "\nGoodbye!";
-        ()
+        LNoise.history_save ~filename:history_file |> ignore
+    | Some input ->
+        if String.trim input <> "" then (
+          LNoise.history_add input |> ignore;
+          parse_and_eval input;
+          flush stdout);
+        repl ()
   in
   repl ()
-
