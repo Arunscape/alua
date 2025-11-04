@@ -3,7 +3,7 @@ open Alua
 let parse_and_eval input =
   let lexbuf = Lexing.from_string input in
   try
-    Parser.main Lexer.token lexbuf;
+    Parser.program Lexer.token lexbuf;
     flush stdout
   with
   | Failure msg ->
