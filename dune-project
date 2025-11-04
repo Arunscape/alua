@@ -20,7 +20,7 @@
  (name alua)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml)
+ (depends ocaml ppx_inline_test)
  (tags
   ("add topics" "to describe" your project)))
 

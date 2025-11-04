@@ -1,1 +1,1 @@
-let env : (string, float) Hashtbl.t = Hashtbl.create 10
+let env : (string, Value.t) Hashtbl.t = Hashtbl.create 10
