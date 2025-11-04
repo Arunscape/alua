@@ -2,7 +2,7 @@
 %token <string> STRING
 %token <string> IDENT
 %token ASSIGN CONCAT
-%token PLUS MINUS TIMES DIV
+%token PLUS MINUS TIMES DIV MOD
 %token LPAREN RPAREN COMMA
 %token PRINT NIL
 %token EOF
@@ -96,6 +96,13 @@ expr:
   | e1 = expr DIV e2 = expr 
     { 
       fun () -> Value.Number (Value.to_number (e1 ()) /. Value.to_number (e2 ()))
+    }
+    | e1 = expr MOD e2 = expr 
+    { 
+      fun () -> 
+        let n1 = Value.to_number (e1 ()) in
+        let n2 = Value.to_number (e2 ()) in
+        Value.Number (mod_float n1 n2)
     }
   
   (* Comparisons *)

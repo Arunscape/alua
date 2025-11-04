@@ -41,6 +41,7 @@ rule token = parse
   | '-'        { MINUS }
   | '*'        { TIMES }
   | '/'        { DIV }
+  | '%' { MOD}
   | '<'        { LT }
   | '>'        { GT }
   | '('        { LPAREN }
