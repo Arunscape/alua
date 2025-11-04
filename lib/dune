@@ -1,9 +1,9 @@
 (library
  (name alua)
- (modules lexer parser)
+ (modules interpreter lexer parser)
  (libraries linenoise))
 
 (ocamllex lexer)
 
 (menhir
-  (modules parser))
+ (modules parser))

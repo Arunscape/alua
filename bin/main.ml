@@ -3,11 +3,15 @@ open Alua
 let parse_and_eval input =
   let lexbuf = Lexing.from_string input in
   try
-    let result = Parser.main Lexer.token lexbuf in
-    Printf.printf "= %.2f\n" result
+    Parser.main Lexer.token lexbuf;
+    flush stdout
   with
-  | Failure msg -> Printf.printf "Error: %s\n" msg
-  | Parser.Error -> Printf.printf "Syntax error\n"
+  | Failure msg ->
+      Printf.printf "Error: %s\n" msg;
+      flush stdout
+  | Parser.Error ->
+      Printf.printf "Syntax error\n";
+      flush stdout
 
 let () =
   print_endline "Arun's Lua Interpreter that is just a calculator for now";
